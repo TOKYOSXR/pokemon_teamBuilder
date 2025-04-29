@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Quicksand:wght@300..700&display=swap');
+
+:root{
+    --primary-color: #CC0000;
+    --secondary-color: #ffffff;
+    --botton-color: #FFCC00;
+    --font-text: 'Quicksand', sans-serif;
+    --font-tittle: 'Orbitron', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--font-text);
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    padding: 2rem;
+    background-color: #CC0000;
+    color: #ffffff;
+}
+
+h1{
+    font-family: var(--font-tittle);
+}
+
+.menu{
+    display: flex;
+}
+
+.menu li{
+    list-style: none;
+    margin-left: 16px;
+}
+
+main{
+    padding: 2rem;
+    text-align: center;
+}
+
+.time{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.time h2{
+    margin-bottom: 16px;
+    font-size: 2rem;
+    color: #CC0000;
+    font-family: var(--font-tittle);
+}
+
+.time-pokemon{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 70px;
+    padding: 4em;
+    background-color: ghostwhite;
+    border: 0.1rem solid gray ;
+    border-radius: 10px;
+}
+
+.time-pokemon li{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    font-family: var(--font-text);
+}
+
+.time-pokemon li div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #CC0000;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    height: 5em;
+    width: 10em;
+
+}
+
+.time-pokemon li img{
+    max-width: 150px;
+}
+
+.pokedex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 70px;
+    padding: 4em;
+    background-color: ghostwhite;
+    border: 0.1rem solid gray ;
+    border-radius: 10px;
+}
