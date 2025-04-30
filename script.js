@@ -1,56 +1,41 @@
 async function getPokemons() {
     try {
-        const resposta = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0');
+        const nome = document.querySelector('.input-pokemon').value.toLowerCase().trim();
+        const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`);
         const dados = await resposta.json();
 
-        const pokedex = document.querySelector('.pokedex');
-        for (let pokemon of dados.results) {
+        const pokemonPesquisado = document.querySelector('.pokemon_pesquisado');
 
-            const respostaPokemon = await fetch(pokemon.url);
-            const dadosPokemon = await respostaPokemon.json();
+        // Obtém todos os tipos e gera os ícones correspondentes
+        const tipos = dados.types.map(t => t.type.name); // Exemplo: ['fire', 'flying']
+        const tiposHTML = tipos.map(tipo => {
+            const caminhoIcone = `./assents/imagens/icons/${tipo}.svg`;
+            return `
+                <div class="iconTipo">
+                    <img class="${tipo}" src="${caminhoIcone}" alt="${tipo}">
+                </div>
+            `;
+        }).join(''); // Concatena todos os tipos e ícones
 
-
-            const img = document.createElement('img');
-            img.src = dadosPokemon.sprites.front_default;
-            img.alt = pokemon.name;
-
-            const li = document.createElement('li');
-            li.appendChild(img);
-            li.dataset.pokemonName = pokemon.name; 
-
-
-            pokedex.appendChild(li);
-            const timePokemon = document.querySelector('.time-pokemon');
-            // Evento de clique no Pokémon para mostrar detalhes
-            li.addEventListener('click', function (event) {
-                 
-                
-
-                
-                imagemPoke.src = dadosPokemon.sprites.front_default;
-                imagemPoke.alt = pokemon.name;
-
-                // Atualiza o nome do Pokémon
-                const nomePoke = document.querySelector(".nome-pokemon");
-                nomePoke.textContent = pokemon.name;
-
-                li.remove();
-                
-            });
-
-            t.addEventListener('click', function(event){
-
-                imagemPoke.src = 'assents/imagens/quem é esse pokemon.png'
-                imagemPoke.alt = 'Imagem do pokemon';
-                nomePoke.textContent = "???"
-
-                pokedex.appendChild(li)
-            })
-
-        }
+        pokemonPesquisado.innerHTML = `
+            <div class="card_pokemon">
+                <img class="pokemonImg" src="${dados.sprites.front_default}" alt="Imagem do pokemon">
+                <h2>${dados.name}</h2>
+                <div class="tipos">${tiposHTML}</div> <!-- Aqui é onde todos os tipos são mostrados -->
+                <button class="btn-adicionar">Adicionar ao time</button>
+            </div>
+        `;
     } catch (error) {
         console.error('Erro ao buscar o Pokémon:', error);
+        const pokemonPesquisado = document.querySelector('.pokemon_pesquisado');
+        pokemonPesquisado.innerHTML = '<p clsass="erro">Pokemon nao encontrado, tente Novamente ou digite um pokemon valido</p>';
     }
 }
 
-getPokemons();
+// Eventos
+document.querySelector('.btn-pesquisar').addEventListener('click', getPokemons);
+document.querySelector('.input-pokemon').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        getPokemons();
+    }
+});
