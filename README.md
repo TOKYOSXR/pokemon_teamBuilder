@@ -40,8 +40,7 @@ Essa URL retorna os dados completos de qualquer Pokémon, incluindo nome, imagem
   - 🟡 Amarelo Pikachu: `#FFCC00`
   - 🔵 Azul clássico: `#0075BE`
 - Layout 100% responsivo (mobile e desktop).
-- Fonte recomendada: **"Press Start 2P"** do Google Fonts (8-bit style).
-  - Link: [https://fonts.google.com/specimen/Press+Start+2P](https://fonts.google.com/specimen/Press+Start+2P)
+- Fonte recomendada: Orbitron para titulos e quicksand para textos.
 
 ---
 
